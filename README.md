@@ -12,14 +12,19 @@ Make sure you have [Python 3](https://www.python.org/downloads/) installed, then
 
 Unzip the training_dataset.zip file. It should look something like this:
 ![screenshot](https://user-images.githubusercontent.com/111407501/223183207-1262d2fd-e0c0-42f5-8977-593f703c71c2.png)
+<br>
 with the individual images in each folder
 
-Then, run this cmd in git:
+Then, run this cmd in git to initiate the transfer learning:
 ```javascript
 $ bash train.sh
 ```
+This installs the ``Inception`` model and returns an accuracy from ``85-100%``
+The ``training summaries``, ``retrained graphs`` and ``retrained labels`` will be saved in a folder named ``tf_files``.
 
 Finally to run the code, run the cmd:
 ```javascript
 py app.py
 ```
+
+Once the input file is selected, the classifier will output the predictions for each data set. A prediction score between ``0.8`` to ``1`` is considered to be optimal.
