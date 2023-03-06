@@ -11,6 +11,7 @@ The output is in the form of a probability of what the algorithm thinks the obje
 Make sure you have [Python 3](https://www.python.org/downloads/) installed, then install [Tensorflow](https://www.tensorflow.org/install/) on your system, and clone this repo.
 
 Unzip the training_dataset.zip file in the main folder itself. It should look something like this:
+<br>
 ![screenshot](https://user-images.githubusercontent.com/111407501/223183207-1262d2fd-e0c0-42f5-8977-593f703c71c2.png)
 <br>
 with the individual images in each folder
