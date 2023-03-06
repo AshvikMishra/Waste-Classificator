@@ -1,49 +1,44 @@
-# Digital OCEAN FLASK SERVER RECEIVES IMAGE
-from flask import Flask, request, jsonify
 import classify
 import base64
-import json
-import firebase
-import env
 
-# Instantiate Flask
-app = Flask(__name__)
+import tkinter as tk
+from tkinter import filedialog
+from tkinter.filedialog import askopenfile
+from PIL import Image, ImageOps
 
+file_path = tk.filedialog.askopenfilename()
 
-# health check
-@app.route('/status')
-def health_check():
-    return 'Running!'
+result = classify.analyse(file_path)
 
+print(result)
 
-# Performing image Recognition on Image, sent as bytes via POST payload
-@app.route('/detect', methods=["POST"])
-def detect():
+from tkinter import *
+from PIL import ImageTk, Image
 
-    imgBytes = request.data
+win = Tk()
 
-    imgdata = base64.b64decode(imgBytes)
-    with open("temp.png", 'wb') as f:
-        f.write(imgdata)
+win.geometry("1920x1080")
 
-    print("successfully receieved image")
-    
-    # Pass image bytes to classifier
-    result = classify.analyse("temp.png")
+frame = Frame(win, width=1280, height=720)
+frame.pack()
+frame.place(anchor='n', relx=0.5, rely=0.1)
 
-    # Return results as neat JSON object, using 
-    result = jsonify(result)
-    print(result.json)
+img = Image.open(file_path)
+resized_img= img.resize((1280,720), Image.ANTIALIAS)
+new_img= ImageTk.PhotoImage(img)
 
-    response_data = result.json
-    print(response_data)
-    
-    db = firebase.Firebase()
-    db.authenticate()
-    db.push(response_data)
-    print("Updated Firebase.")
+label = Label(frame, image = new_img, borderwidth = 0)
+label.pack()
 
-    return result
+T = Text(win, height = 10, width = 1280)
+l = Label(win, text = result)
+l.config(font = ("Helvetica", 20), wraplength = 1280, justify = "center", foreground = "white", background = "midnightblue")
+final = result
+l.pack()
+T.insert(tk.END, final)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+win.attributes('-topmost',True)
+win.state('zoomed')
+win.configure(bg = 'midnightblue')
+
+win.mainloop()
