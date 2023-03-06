@@ -19,7 +19,8 @@ Then, run this cmd in git to initiate the transfer learning:
 ```javascript
 $ bash train.sh
 ```
-This installs the ``Inception`` model and returns an accuracy from ``85-100%``
+This installs the ``Inception`` model and returns an accuracy from ``85-100%``.
+<br>
 The ``training summaries``, ``retrained graphs`` and ``retrained labels`` will be saved in a folder named ``tf_files``.
 
 Finally to run the code, run the cmd:
