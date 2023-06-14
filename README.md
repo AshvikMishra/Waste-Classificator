@@ -1,5 +1,5 @@
 # About the Project
-This is a project forked from the [antiplasti github repository](https://github.com/antiplasti/Plastic-Detection-Model).
+This is a project forked from the [antiplasti/Plastic-Detection-Model github repository](https://github.com/antiplasti/Plastic-Detection-Model).
 
 A generic image detection program that uses Google's Machine Learning library, [Tensorflow](https://www.tensorflow.org/) and a pre-trained Deep Learning Convolutional Neural Network model called [Inception](https://research.googleblog.com/2016/03/train-your-own-image-classifier-with.html).
 
